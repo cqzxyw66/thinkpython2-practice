@@ -9,7 +9,7 @@ def is_palindrome(word):
     return True
 
 def main():
-    for i in range(1, 1000000, 1):
+    for i in range(900000, 1000000, 1):
         str_number = str(i)
         length = len(str_number)
         k = 4
