@@ -9,12 +9,13 @@ def is_palindrome(word):
     return True
 
 def main():
-    for i in range(900000, 1000000, 1):
+    for i in range(9999):
         str_number = str(i)
         length = len(str_number)
         k = 4
         while length > 3 and k <= length:
             if is_palindrome(str_number[-k:]):
                 print(i)
+                break
             k = k + 1
 main()
