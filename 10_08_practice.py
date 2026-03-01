@@ -24,6 +24,6 @@ def has_birth_day_duplicate(list):
         new_list.append(i)
     return total / 23 * 100
 
-t = birth_day_create(30)
+t = birth_day_create(50)
 print(t)
 print("%.2f%%" %(has_birth_day_duplicate(t)))
