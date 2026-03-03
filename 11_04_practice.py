@@ -1,11 +1,11 @@
 def has_duplicates(list):
-    new_list = []
+    new_dict = {}
     for i in list:
-        if i in new_list:
+        if i in new_dict:
             return True
         else:
-            new_list.append(i)
+            new_dict[i] = False
     return False
     
-t = ['123', '321', '1234', '1234']
+t = ['123', '321', '1234', '12345', '123456', '123']
 print(has_duplicates(t))

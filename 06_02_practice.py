@@ -9,4 +9,4 @@ def ackermann(m, n):
 def ack(x, y):
     return ackermann(x, y)
 
-print(ack(3, 3))
+print(ack(0, 1))
