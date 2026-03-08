@@ -16,7 +16,8 @@ def most_frequest(x):
     # 新建字符串result, result的取值就等于key(出现次数) * value(字母)
     result = str()
     for m in sorted_k:
-        for n in k[m]:
+        val_2 = sorted(k[m])
+        for n in val_2:
             result += m * n
     return result
 
