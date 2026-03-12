@@ -22,6 +22,7 @@ for i in range(20):
  """
 
 import string
+import random
 
 def process_file(filename):
     hist = dict()
@@ -72,6 +73,26 @@ def subtract_set(d1, d2):
     return set(d1) - set(d2)
     
 words = process_file('words_origin.txt')
-diff = subtract_set(hist, words)
+words_list = sorted(set(words))
 
-print(subtract_set(hist, words))
+def all_words_feq():
+    words_feq_list = list()
+    values_sum = 0
+    for key in words_list:
+        values_sum += words[key]
+        words_feq_list.append(values_sum)
+    return words_feq_list
+
+words_feq_list = all_words_feq()
+
+def random_words_order():
+    a = random.randint(0, words_feq_list[-1])
+    b = words_feq_list[a]
+    return b 
+
+random_words_order = random_words_order()
+
+def random_word():
+    return words_list[random_words_order]
+
+print(random_word())
