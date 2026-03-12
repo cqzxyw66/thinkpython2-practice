@@ -44,7 +44,7 @@ def zhihuandui_search(word1):
     fin = open('words_origin.txt')
     for i in fin:
         if is_zhihuandui(word1, i.strip()) is True:
-            print(word1, 'and', i.strip(), 'is zhihuandui')
+            print(word1, '的置换对是', i.strip())
 
 # print(is_zhihuandui('besliming', 'besmiling'))
-zhihuandui_search('palest')
+zhihuandui_search('bless')
