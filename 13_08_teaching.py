@@ -33,6 +33,9 @@ def random_words(filename, interval=2):
         b += 1
     return d
 
+# t = random_words('emma.txt', 2)
+# print(t[('this', 'was')])
+
 def random_out(filename, interval=2, repeat=1):
     t = random_words(filename, interval)
     a_key = list()
@@ -50,4 +53,4 @@ def random_out(filename, interval=2, repeat=1):
         new_string.append(value)
     return ' '.join(new_string)
 
-print(random_out('emma.txt', repeat=10, interval=2))
+print(random_out('emma.txt', interval=2, repeat=20))
