@@ -14,9 +14,10 @@ import anagram_sets
 #         key_2 = first_word_in_line, length_line
 #         a[key_2] = new_list
 
-def store_anagrams(origin_filename, destination_filename):
+def store_anagrams(origin_filename, destination_filename, writable='y'):
     huiwen = anagram_sets.huiwen(origin_filename)
-    fp = open(destination_filename, 'w')
+    if writable == 'y':
+        fp = open(destination_filename, 'w')
     a = dict()
     for i in huiwen:
         length = len(i)
@@ -29,9 +30,10 @@ def store_anagrams(origin_filename, destination_filename):
                 new_list.append(key)
             key_2 = first_word_in_line # 也可以加上', length_line作为回文数量，这里就没加了'
             a[key_2] = new_list
-            # fp.write(f'{key_2}, {length_line}:{new_list}\n')
+            if writable == 'y':
+                fp.write(f'{key_2}, {length_line}:{new_list}\n')
     return a
-sortd_letters = store_anagrams('words_origin.txt', 'new_file.txt')
+sortd_letters = store_anagrams('words_origin.txt', 'new_file.txt', writable = 'n')
 
 def read_anagrams(word, file='words_origin.txt'):
     a_sorted = ''.join(sorted(word))
@@ -40,4 +42,4 @@ def read_anagrams(word, file='words_origin.txt'):
     except:
         print('不存在回文的哈，兄弟')
 
-read_anagrams('girts')
+read_anagrams('deist')
