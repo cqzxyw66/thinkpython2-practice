@@ -42,4 +42,4 @@ def read_anagrams(word, file='words_origin.txt'):
     except:
         print('不存在回文的哈，兄弟')
 
-read_anagrams('deist')
+read_anagrams('joker')
