@@ -29,7 +29,7 @@ def point_in_circle(circle, point):
         return True
     
 point_instance = point()
-point_instance.x = 160
-point_instance.y = 200
+point_instance.x = 224
+point_instance.y = 101
 
 print(point_in_circle(circle_instance, point_instance))
