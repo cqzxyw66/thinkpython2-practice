@@ -26,10 +26,16 @@ def day_of_week():
 
 def int_to_date(birthday):
     year, month, day = int(str(birthday)[0:4]), int(str(birthday)[4:6]), int(str(birthday)[6:9])
-    return datetime.datetime(year, month, day, 0, 0, 0)
+    return datetime.date(year, month, day)
 
 def print_age(birthday):
     birth_date = int_to_date(birthday)
-    today_date = datetime.datetime.now()
+    today_date = datetime.date.today()
+    date_gap = today_date - birth_date
+    age = date_gap.days // 365
+    next_birth_day = 365 - date_gap.days % 365
+    # next_birthday_gap = datetime.date(,next_birth_day // 30, next_birth_day % 30)
+    print('你现在已经%d岁，距离生日还有%d天'%(age, next_birth_day))
+    
 
-day_of_week()
+print_age(19880410)
