@@ -24,18 +24,39 @@ def day_of_week():
     week_day = today.isoweekday()
     return print('今天是星期%d' %week_day)
 
-def int_to_date(birthday):
+def int_to_date(birthday) -> datetime.date:
     year, month, day = int(str(birthday)[0:4]), int(str(birthday)[4:6]), int(str(birthday)[6:9])
     return datetime.date(year, month, day)
 
 def print_age(birthday):
     birth_date = int_to_date(birthday)
-    today_date = datetime.date.today()
-    date_gap = today_date - birth_date
-    age = date_gap.days // 365
-    next_birth_day = 365 - date_gap.days % 365
-    # next_birthday_gap = datetime.date(,next_birth_day // 30, next_birth_day % 30)
-    print('你现在已经%d岁，距离生日还有%d天'%(age, next_birth_day))
-    
+    today = datetime.date.today()
+    gap = today - birth_date
+    age = gap.days // 365
+    this_year_birthday = datetime.date(year=today.year, month=birth_date.month, day = birth_date.day)
+    if today < this_year_birthday:
+        age -= 1
+        next_birthday = this_year_birthday 
+    else:
+        next_birthday = datetime.date(year=today.year + 1, month=birth_date.month, day=birth_date.day)
+    gap_next_birthday = next_birthday - today
+    seconds = gap_next_birthday.seconds % 60
+    minutes = seconds % 60 
+    hours = minutes % 60
+    # print(type(gap_next_birthday.days))
 
-print_age(19880410)
+    print('你当前%d岁，距离下一个生日还有%d天,%d小时,%d分钟,%d秒' % (age, gap_next_birthday.days, hours, minutes, seconds))
+
+def multiple_age(birthday1, birthday2, multiple=2):
+    birthday1 = int_to_date(birthday1)
+    birthday2 = int_to_date(birthday2)
+    if birthday1 > birthday2:
+        older_boy, younger_boy = birthday2, birthday1
+    else:
+        older_boy, younger_boy = birthday1, birthday2
+    birthday_delta = younger_boy - older_boy
+    multiple_date = multiple * birthday_delta + older_boy
+    # print(multiple_date)
+    print('下次是你%d倍的日子是%d年%d月%d日' % (multiple, multiple_date.year, multiple_date.month, multiple_date.day))
+
+multiple_age(19880323,19891024,4)
