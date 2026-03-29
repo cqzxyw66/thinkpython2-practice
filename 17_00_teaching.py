@@ -17,9 +17,19 @@ def int_to_time(seconds):
     time.hour, time.minute = divmod(minutes, 60)
     return time
 
+
 t1 = Time()
 t1.hour = 9
 t1.minute = 44
 t1.second = 0
 
-print(t1.increment(59).hour, t1.increment(59).minute, t1.increment(59).second)
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return '坐标X轴为%g, Y轴为%g' % (self.x, self.y)
+
+point = Point(1,2)
+print(point)

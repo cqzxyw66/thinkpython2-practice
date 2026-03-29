@@ -56,7 +56,9 @@ def multiple_age(birthday1, birthday2, multiple=2):
         older_boy, younger_boy = birthday1, birthday2
     birthday_delta = younger_boy - older_boy
     multiple_date = multiple * birthday_delta + older_boy
+    older_boy_age = (multiple_date - older_boy).days // 365
+    younger_boy_age = (multiple_date - younger_boy).days // 365
     # print(multiple_date)
-    print('下次是你%d倍的日子是%d年%d月%d日' % (multiple, multiple_date.year, multiple_date.month, multiple_date.day))
+    print('下次是你%d倍的日子是%d年%d月%d日, 那时候一个%d岁，一个%d岁' % (multiple, multiple_date.year, multiple_date.month, multiple_date.day, older_boy_age, younger_boy_age))
 
-multiple_age(19880323,19891024,4)
+multiple_age(19880323, 19891014, 2)
