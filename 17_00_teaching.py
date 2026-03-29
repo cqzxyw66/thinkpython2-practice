@@ -30,6 +30,22 @@ class Point:
 
     def __str__(self):
         return '坐标X轴为%g, Y轴为%g' % (self.x, self.y)
+    
+    def __add__(self, other):
+        type_other = type(other)
+        new_point = Point()
+        if type_other is Point:
+            new_point.x = self.x + other.x
+            new_point.y = self.y + other.y
+        elif type_other is tuple:
+            new_point.x = self.x + other[0]
+            new_point.y = self.y + other[1]
+        return new_point
+    
+    def __radd__(self, other):
+        return self.__add__(other)
 
-point = Point(1,2)
-print(point)
+point1 = 1, 6
+point2 = Point(2,3)
+
+print(point1 + point2)
