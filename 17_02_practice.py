@@ -14,7 +14,7 @@ class Kangaroo:
         return a
     
     def put_in_pouch(self, object):
-        if isinstance(object, list) or isinstance(object, tuple):
+        if isinstance(object, (list, tuple)):
             for i in object:
                 self.pouch_contents.append(i)
         else:
@@ -22,15 +22,17 @@ class Kangaroo:
         return self
     
     def __add__(self, other):
-        new_Kangaroo = Kangaroo()
         try:
-            new_Kangaroo = self.pouch_contents + other.pouch_contents
-            return new_Kangaroo
+            for i in other.pouch_contents:
+                self.pouch_contents.append(i)
+            return self
         except:
             return '大哥，你输入的是Kangaroo类嘛？'
     
-a = Kangaroo()
-a.put_in_pouch(2345)
+a = Kangaroo(1234)
+a.put_in_pouch(5678)
+b = Kangaroo((1,2,3,4))
+b.put_in_pouch((5,6,7,8))
 
-b = Kangaroo([2, 4, 5])
-print(a + b)
+c = a + b
+print(c)
