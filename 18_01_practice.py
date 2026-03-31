@@ -49,29 +49,30 @@ class Deck:
     def move_cards(self, hand, num):
         for i in range(num):
             hand.add_card(self.pop_card())
-            
+
+    def deal_hands(self, persons, one_hand_card_nums):
+        a = []
+        for i in range(persons):
+            a.append(Hand())
+        for i in range(one_hand_card_nums):
+            j = 0
+            for i in range(persons):
+                self.move_cards(a[i], 1)
+                j += 1
+        return a
+
 class Hand(Deck):
     def __init__(self, lable=''):
         self.cards = []
         self.lable = lable
 
-class Time:
-    def __init__(self, hour=0, minute=0, second=0):
-        self.hour = hour
-        self.minute = minute
-        self.second = second
+all_cards = Deck()
+all_cards.shuffle()
 
-    def __lt__(self, other):
-        try:
-            t1 = self.hour, self.minute, self.second
-            t2 = other.hour, other.minute, other.second
-            return t1 < t2
-        except:
-            return '大哥你输入的Time类吗？'
-
-
-deck = Deck()
-deck.shuffle()
-print(deck.cards[0])
-# print('---')
-# print(deck.sort_deck())
+print(all_cards)
+x = all_cards.deal_hands(4, 13)
+j = 0
+for i in x:
+    print(f'---第{j+1}家牌：---', '\n', end = '')
+    print(i)
+    j +=1
