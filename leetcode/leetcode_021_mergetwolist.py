@@ -4,31 +4,18 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        def add_tail(list, val):
-            if not list:
-                return ListNode(val)
-            cur = list
-            while cur.next:
-                cur = list.next
-            cur.next = ListNode(val)
-            return list
-                
-        cur = list1
-        while list2:
-            base = 0 if not list1 else list1.next.val
-            if list2.val <= base:
-                list1.next = ListNode(list2.val, list1.next)
-                list2 = list2.next
-                list1 = list1.next
-            # elif base == 0:
-            #     list1.next = ListNode(list2.val)
-            #     list2 = list2.next
-            #     list1 = list1.next
-            else:
-                list1 = list1.next
-
-        return cur
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+        if not list1:
+            return list2
+        if not list2:
+            return list1
+        
+        if list1.val <= list2.val:
+            list1.next = self.mergeTwoLists(list1.next, list2)
+            return list1
+        else:
+            list2.next = self.mergeTwoLists(list2.next, list1)
+            return list2
         
 list1_0 = ListNode(1)
 list1_1 = ListNode(2)
@@ -36,7 +23,7 @@ list1_2 = ListNode(4)
 
 list2_0 = ListNode(1)
 list2_1 = ListNode(3)
-list2_2 = ListNode(5)
+list2_2 = ListNode(8)
 
 list1_0.next = list1_1
 list1_1.next = list1_2
