@@ -31,15 +31,16 @@ except Exception as e:
     print('执行错误：' + str(e))
 
 for host in nm.all_hosts():
-    print('-----------------------------------')
-    print('Host: %s (%s)' % (host, nm[host].hostname()))
-    print('State: %s' % nm[host].state())
+    if nm[host].state() == 'up':
+        print('-----------------------------------')
+        print('Host: %s (%s)' % (host, nm[host].hostname()))
+        print('State: %s' % nm[host].state())
 
-    for proto in nm[host].all_protocols():
-        print('-------------')
-        print('协议是：%s' % proto)
+        for proto in nm[host].all_protocols():
+            print('-------------')
+            print('协议是：%s' % proto)
 
-        lport = list(nm[host][proto].keys())
-        lport.sort()
-        for port in lport:
-            print('端口：%s \t状态：%s' % (port, nm[host][proto][port]['state']))
+            lport = list(nm[host][proto].keys())
+            lport.sort()
+            for port in lport:
+                print('端口：%s \t状态：%s' % (port, nm[host][proto][port]['state']))
