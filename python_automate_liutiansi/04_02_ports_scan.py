@@ -26,7 +26,7 @@ except Exception as e:
 try:
     #调用方法，参数指定扫描主机hosts，nmap扫描命令行参数 arguments
     nm.scan(hosts=hosts,
-            arguments=' -v -sS -p' + ports,)
+            arguments=' -v -sS -p' + ports)
 except Exception as e:
     print('执行错误：' + str(e))
 
@@ -39,7 +39,7 @@ for host in nm.all_hosts():
         print('-------------')
         print('协议是：%s' % proto)
 
-        lport = nm[host][proto].keys()
+        lport = list(nm[host][proto].keys())
         lport.sort()
         for port in lport:
-            print('端口：%s \t状态：%s' % (port, nm[host][proto]['state']))
+            print('端口：%s \t状态：%s' % (port, nm[host][proto][port]['state']))
