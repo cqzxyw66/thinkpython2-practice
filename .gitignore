@@ -1,4 +1,5 @@
 *.log
 cr2_convert_to_jpg/
 *.py[cod]
-.vscode
+.vscode/
+__pycache__/
