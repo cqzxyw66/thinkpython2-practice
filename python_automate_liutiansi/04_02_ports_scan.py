@@ -17,7 +17,7 @@ ports = scan_now[1]
 try:
     nm = nmap.PortScanner() #创建端口扫描实例
 except nmap.PortScannerError:
-    print('Nmap模块没有找到：', sys.exc_info([0]))
+    print('Nmap模块没有找到：', sys.exc_info()[0])
     sys.exit()
 except Exception as e:
     print('不可预知错误：'+ str(e))
